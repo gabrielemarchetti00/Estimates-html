@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Client's home</title>
+<link rel="stylesheet" type="text/css" href="./css/style2.css">
+</head>
+<body>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+	
+	<h1>Welcome to the Client's Home Page</h1>
+	<p th:text="${'Nice to see you again ' + session.user.username}"></p>
+	
+	<h3>These are the estimates that you created</h3>
+	<div th:if="${estimates.size() >0}">
+		<table>
+			<thead>
+				<tr>
+					<th>Estimate id </th>
+					<th>Link</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="e : ${estimates}">
+					<td th:text="${e.id}"></td>
+					<td><a th:href="@{/GetEstimateDetails(estimateid=${e.id})}">Details</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div> 
+	<div th:if="${estimates.size() == 0}"> No estimates were created.</div>
+	
+	
+	<h3>Here you can create an estimate, first choose a product</h3>
+	<div th:if="${products.size() >0}">
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Image</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p : ${products}"> 
+					<td><a th:href="@{/GetProductOptions(productid=${p.id})}"
+						   th:text="${p.name}"></a>
+					</td>                                           
+     				<td><img width="300" th:src="@{'data:image/jpeg;base64,' + ${p.image} }" /></td> 
+				</tr>
+			</tbody>
+		</table>
+	</div>  
+	<div th:if="${products.size() == 0}"> No products.</div>
+	
+</body>
+</html>

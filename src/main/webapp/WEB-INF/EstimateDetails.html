@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Estimate</title>
+<link rel="stylesheet" type="text/css" href="./css/style3.css">
+</head>
+<body>
+	<h1>Estimate details</h1>
+	<a th:href="@{/GoToHomeClient}">Back to home</a>
+	
+	<h3 th:text="${'These are the details of estimate: ' + chosenEstimateId}"></h3>
+	<p th:text=" ${'Client: ' + usrnc}"></p>
+	<p th:text=" ${'Product: ' + prodname}"></p>
+	
+	<table class="t1">
+		<thead>
+			<tr>
+				<th>Option</th>
+				<th>Type</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="o : ${options}">  
+				<td th:text="${o.name}"></td>  
+				<td th:text="${o.type}"></td>                                       
+			</tr>
+		</tbody>
+	</table> 
+	
+	<br>
+	<br>
+	<div th:if="${b==false}">
+		<table class="t2">
+			<tr>
+				<td th:text=" ${'Worker: ' + usrnw}"></td>
+			</tr>
+			<tr>
+				<td th:text=" ${'Price: ' + estimate.price}"></td>
+			</tr>
+		</table>
+	</div>
+	<div th:if="${b==true}">Here will be the price defined by the worker</div>
+
+</body>
+</html>

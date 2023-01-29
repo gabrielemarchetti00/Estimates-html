@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login page</title>
+<link rel="stylesheet" type="text/css" href="./css/style1.css">
+</head>
+<body>
+	<h1>Welcome to the Estimates Management Application</h1>
+	
+	<p>Insert your username and password here:</p>
+		<form action="CheckLogin" method="POST">
+			<table>
+				<tr>
+					<td>Username:</td>
+					<td><input type="text" name="username" required></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="pwd" required></td>
+				</tr>
+			</table>
+			<input type="submit" value="login">
+		</form>
+	<br>
+	<p>If you don't have an account: <a href="RegisterPage.html">Sign Up</a></p>
+</body>
+</html>

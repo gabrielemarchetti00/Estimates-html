@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Worker's home</title>
+<link rel="stylesheet" type="text/css" href="./css/style2.css">
+</head>
+<body>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+
+	<h1>Welcome to the Worker's Home Page</h1>
+	<p th:text="${'Nice to see you again ' + session.user.username}"></p>
+	
+	<h3>These are the estimates that you handled:</h3>
+	<div th:if="${westimates.size() >0}">
+		<table>
+			<thead>
+				<tr>
+					<th>Estimate id</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="we : ${westimates}">  
+					<td th:text="${we.id}"></td>
+					<td th:text="${we.price}"></td>                                           
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:if="${westimates.size() == 0}"> No estimates handled yet.</div>
+	
+	<h3>Estimates not assigned yet:</h3>
+	<div th:if="${naestimates.size() >0}">
+	<table>
+		<thead>
+			<tr>
+				<th>Estimate id</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="na : ${naestimates}">  
+				<td><a th:href="@{/GoToEstimatePrice(estimateid=${na.id})}"
+					   th:text="${na.id}"></a>
+				</td>                                           
+			</tr>
+		</tbody>
+	</table>
+</div>  
+<div th:if="${naestimates.size() == 0}"> All estimates assigned.</div>
+	
+</body>
+</html>

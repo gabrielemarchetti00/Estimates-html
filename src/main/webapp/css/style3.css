@@ -1,0 +1,28 @@
+body {
+  text-align: center;
+  background-color: #80ffff;
+}
+
+.t1
+{
+    display: inline-block;
+    border: 1px solid white;
+}
+
+.t2
+{
+    display: inline-block;
+    background-color: #64dff4;
+}
+
+.t3
+{
+    display: inline-block;
+    border: 1px solid white;
+}
+
+div
+{
+	display: inline-block;
+    background-color: #64dff4;
+}

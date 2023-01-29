@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign In</title>
+<link rel="stylesheet" type="text/css" href="./css/style1.css">
+</head>
+<body>
+	<h1>Sign Up</h1>
+	
+	<p>Insert your data here:</p>
+	<form action="CheckSignUp" method="POST">
+		<table>
+			<tr>
+				<td>Role:</td>
+				<td>
+					<select name="role">
+						<option value="client">client</option>
+						<option value="worker">worker</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Username:</td>
+				<td><input type="text" name="username" required></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="email" name="email" required></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" name="pwd" required></td>
+			</tr>
+			<tr>
+				<td>Repeat password:</td>
+				<td><input type="password" name="rpwd" required></td>
+			</tr>
+		</table>
+		<input type="submit" value="sign up">
+	</form>
+	<br>
+	<p>Already have an account? <a href="index.html">Login</a></p>
+	
+</body>
+</html>

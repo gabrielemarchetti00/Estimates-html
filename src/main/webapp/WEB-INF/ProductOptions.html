@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Option</title>
+<link rel="stylesheet" type="text/css" href="./css/style1.css">
+</head>
+<body>
+	<h1>Options</h1>
+	<a th:href="@{/GoToHomeClient}">Back to home</a>
+	<h3 th:text="${'Choose options for product: ' + prodname}"></h3>
+	
+	<form th:action="@{/CreateEstimate}" method="POST">
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Check</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="o : ${options}">
+					<td th:text="${o.name}"></td>
+					<td th:text="${o.type}"></td>
+					<td><input type="checkbox" name="checkedOptions" th:value="${o.id}"/></td>
+				</tr>
+			</tbody>
+		</table><br>
+		<input type="hidden" name="productid" th:value="${productid}">
+		<button type="submit" name="action" value="send">Send Estimate</button>
+	</form>
+
+</body>
+</html>

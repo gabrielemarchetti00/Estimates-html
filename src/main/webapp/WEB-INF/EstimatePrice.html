@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Estimate Price</title>
+<link rel="stylesheet" type="text/css" href="./css/style3.css">
+</head>
+<body>
+	<h1>Estimate Price</h1>
+	<a th:href="@{/GoToHomeWorker}">Back to home</a>
+	
+	<h3 th:text="${'These are the details of estimate: ' + chosenEstimateId}"></h3>
+	
+	<p th:text=" ${'Client: ' + client.username}"></p>
+	<p th:text=" ${'Product: ' + product.name}"></p>
+	
+	<table class="t3">
+		<thead>
+			<tr>
+				<th>Option</th>
+				<th>Type</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="o : ${options}">  
+				<td th:text="${o.name}"></td>  
+				<td th:text="${o.type}"></td>                                       
+			</tr>
+		</tbody>
+	</table> 
+	
+	<br>
+	<br>
+	<br>
+	<div>
+		<p>Insert a price:</p>
+		<form th:action="@{/EstimatePrice}" method="POST">
+			<input type="number" step="0.01" min="0" name="price" required>
+			<input type="hidden" name="estid" th:value="${chosenEstimateId}">
+			<button type="submit" name="action" value="send">Send Price</button>
+		</form>
+	</div>
+
+</body>
+</html>
